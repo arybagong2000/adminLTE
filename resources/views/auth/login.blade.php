@@ -1,6 +1,88 @@
-@extends('layouts.app')
-
+ @extends('layouts.template_full_body') 
+ {{-- @extends('layouts.app') --}}
 @section('content')
+<div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+         <a href="#" class="h1"><b>{{ config('app.name') }}</b></a>
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Log in to start your session</p>
+
+      <form method="POST" action="{{ route('login') }}">
+      @csrf
+        <div class="input-group mb-3">
+          <input id="email" type="email"  name="email" class="form-control  @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" placeholder="{{ __('Email Address') }}" autofocus />
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @else
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                    </div>
+                </div>
+            @enderror
+            
+        </div>
+        <div class="input-group mb-3">
+          <input id="password" type="password"  name="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ __('Password') }}" required autocomplete="current-password" />
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @else
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            @enderror
+            
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <!-- button type="submit" class="btn btn-success btn-block">Log In</button -->
+            <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <!-- div class="social-auth-links text-center mt-2 mb-3">
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+        </a>
+      </div -->
+      <!-- /.social-auth-links -->
+
+      <!-- p class="mb-1">
+        <a href="forgot-password.html">I forgot my password</a>
+      </p>
+      <p class="mb-0">
+        <a href="register.html" class="text-center">Register a new membership</a>
+      </p>
+    </div -->
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+@endsection
+@section('content1')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

@@ -11,6 +11,7 @@ use Hash;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use App\DataTables\UsersDataTable;
     
 class UserController extends Controller
 {
@@ -30,7 +31,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request): View
+    public function index(UsersDataTable $dataTable)
+    {
+        //dd($dataTable);
+        return $dataTable->render('users.index');
+    }
+    public function index_old(Request $request): View
     {
         $data = User::orderBy('id','DESC')->paginate(5);
         return view('users.index',compact('data'))
