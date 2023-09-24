@@ -1,12 +1,16 @@
-@extends('layouts.app')
-
+@extends('layouts.template')
+@section('module','Products Management')
+@section('title','List Products')
+@push('css_scripts')
 
 @section('content')
+<div class="container">
+    <div class="card">
+        <div class="card-header"><h4>List Products</h4></div>
+        <div class="card-body">
+
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Products</h2>
-            </div>
             <div class="pull-right">
                 @can('product-create')
                 <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
@@ -36,19 +40,21 @@
 	        <td>{{ $product->name }}</td>
 	        <td>{{ $product->detail }}</td>
 	        <td>
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                <!-- form action="{{ route('products.destroy',$product->id) }}" method="POST" -->
                     <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
                     @can('product-edit')
                     <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
                     @endcan
-
-
-                    @csrf
+                    @can('product-delete')
+                    <a class="btn btn-danger" href="{{ route('products.destroy',$product->id) }}" data-confirm-delete="true">Delete</a>
+                    @endcan
+                    
+                    {{-- @csrf
                     @method('DELETE')
                     @can('product-delete')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    @endcan
-                </form>
+                    <!-- button type="submit" class="btn btn-danger">Delete</button -->
+                    @endcan --}}
+                <!-- /form -->
 	        </td>
 	    </tr>
 	    @endforeach
@@ -57,6 +63,7 @@
 
     {!! $products->links() !!}
 
-
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
+        </div>
+    </div>
+</div>
 @endsection

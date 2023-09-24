@@ -1,18 +1,13 @@
-@extends('layouts.app')
-
+@extends('layouts.template')
+@section('module','Products Management')
+@section('title','Edit Products')
+@push('css_scripts')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Product</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
-
+<div class="container">
+    <div class="card">
+        <div class="card-header"><h4>Edit Products</h4></div>
+        <div class="card-body">
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -46,12 +41,12 @@
 		    </div>
 		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 		      <button type="submit" class="btn btn-primary">Submit</button>
+              <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
 		    </div>
 		</div>
-
-
     </form>
 
-
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
+        </div>
+    </div>
+</div>
 @endsection

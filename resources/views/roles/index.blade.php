@@ -1,15 +1,20 @@
-@extends('layouts.app')
-
+@extends('layouts.template')
+@section('module','Role Management')
+@section('title','Role Edit')
+@push('css_scripts')
 
 @section('content')
+<div class="container">
+    <div class="card">
+        <div class="card-header"><h4>Role Management</h4></div>
+        <div class="card-body">
+
+
 <div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Role Management</h2>
-        </div>
-        <div class="pull-right">
-        @can('role-create')
-            <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="text-right">
+            @can('role-create')
+                <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
             @endcan
         </div>
     </div>
@@ -22,7 +27,7 @@
     </div>
 @endif
 
-
+<div> <br /> </div>
 <table class="table table-bordered">
   <tr>
      <th>No</th>
@@ -39,9 +44,10 @@
                 <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
             @endcan
             @can('role-delete')
-                {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                {!! Form::close() !!}
+                <a class="btn btn-danger" href="{{ route('roles.destroy',$role->id) }}" data-confirm-delete="true">Delete</a>
+                {{--!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!--}}
+                    {{--!! Form::submit('Delete', ['class' => 'btn btn-danger','data-confirm-delete'=>'true']) !!--}}
+                {{--!! Form::close() !!--}}
             @endcan
         </td>
     </tr>
@@ -52,5 +58,8 @@
 {!! $roles->render() !!}
 
 
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
+
+        </div>
+    </div>
+</div>
 @endsection

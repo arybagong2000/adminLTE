@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('app.name') }} | @yield('title')</title>
 
   @include('layouts.parts.css_script')
@@ -43,7 +44,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>@yield('title')</h1>
+            <!-- h1>@yield('title')</h1 -->
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -79,8 +80,8 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
 @include('layouts.parts.js_script')
+@include('vendor.sweetalert.alert')
 @stack('scripts')
 </body>
 </html>

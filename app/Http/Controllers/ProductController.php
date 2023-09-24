@@ -28,6 +28,7 @@ class ProductController extends Controller
      */
     public function index(): View
     {
+        confirmDelete();
         $products = Product::latest()->paginate(5);
         return view('products.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -112,8 +113,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product): RedirectResponse
     {
-        $product->delete();
-    
+        //$product->delete();
+        //dd('huhuy');
         return redirect()->route('products.index')
                         ->with('success','Product deleted successfully');
     }

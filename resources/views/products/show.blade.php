@@ -1,18 +1,13 @@
-@extends('layouts.app')
-
+@extends('layouts.template')
+@section('module','Products Management')
+@section('title','Show Products')
+@push('css_scripts')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Product</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
-
+<div class="container">
+    <div class="card">
+        <div class="card-header"><h4>Show Products</h4></div>
+        <div class="card-body">
 
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -28,5 +23,16 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+    
 @endsection
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>

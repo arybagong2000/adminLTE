@@ -1,17 +1,16 @@
 @extends('layouts.template')
+@section('module','Users Management')
+@section('title','Users Edit')
+@push('css_scripts')
 
 
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2> Show User</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
-        </div>
-    </div>
-</div>
+<div class="container">
+    <div class="card">
+        <div class="card-header"><h4>Show Data User</h4></div>
+        <div class="card-body">
+
+
 
 
 <div class="row">
@@ -35,6 +34,17 @@
                     <label class="badge badge-success">{{ $v }}</label>
                 @endforeach
             @endif
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="text-center">
+            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
 </div>

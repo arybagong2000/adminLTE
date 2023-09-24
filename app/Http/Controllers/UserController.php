@@ -12,6 +12,8 @@ use Illuminate\Support\Arr;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\DataTables\UsersDataTable;
+use Alert;
+
     
 class UserController extends Controller
 {
@@ -33,7 +35,12 @@ class UserController extends Controller
      */
     public function index(UsersDataTable $dataTable)
     {
+        
         //dd($dataTable);
+        //$title = 'Delete Data!';
+        //$text = "Are you sure you want to delete?";
+        //confirmDelete($title, $text);
+        confirmDelete();
         return $dataTable->render('users.index');
     }
     public function index_old(Request $request): View
@@ -147,8 +154,9 @@ class UserController extends Controller
      */
     public function destroy($id): RedirectResponse
     {
-        User::find($id)->delete();
-        return redirect()->route('users.index')
-                        ->with('success','User deleted successfully');
+        //User::find($id)->delete();
+        alert()->success('Hore!','Post Deleted Successfully');
+        return back();
+        //return redirect()->route('users.index')->with('success','User deleted successfully');
     }
 }

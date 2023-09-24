@@ -1,6 +1,6 @@
 @extends('layouts.template')
-@section('module','Users Management')
-@section('title','Users')
+@section('module','Suppliers Management')
+@section('title','Suppliers')
 @push('css_scripts')
 <style>
   div.dt-buttons {float:right;padding-bottom :10px;}
@@ -19,26 +19,40 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header">Manage Users</div>
+            <div class="card-header">
+              <div class="float-none">Manage Suppliers</div>
+              <div class="float-end">
+                <button type="button" class="add-sluppliers btn btn-info" data-toggle="modal" data-target="#addModal">Add New Data</button>
+              </div>
+            </div>
             <div class="card-body">
-                {{ $dataTable->table() }}
+                {{  $dataTable->table() }}
             </div>
         </div>
     </div>
-
 @endsection
+@include('suppliers.add_modal')
 @push('scripts')
-{{ $dataTable->scripts() }}  
+{{  $dataTable->scripts() }}  
 
 <script type="text/javascript">
   //jquery
   $(document).ready(function(){
     //console.log("huhuy1");
     $(document).ajaxComplete(function(){
+      $(".bi-plus").on("click",function(){
+        alert('huhuy');
+        return false;
+      });
       //console.log("huhuy2");
       /*$("#users-table").on("click",".edit",function(){
         window.location.href=$this.href;
       });*/
+      $(".add-sluppliers").on("click",function(){
+        alert('huhuy');
+        $("#addModal .modal-body").load("{!! route('suppliers.create') !!}");
+        return;
+      });
     });
   });
 </script>

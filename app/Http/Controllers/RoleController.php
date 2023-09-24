@@ -33,6 +33,7 @@ class RoleController extends Controller
      */
     public function index(Request $request): View
     {
+        confirmDelete();
         $roles = Role::orderBy('id','DESC')->paginate(5);
         return view('roles.index',compact('roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
@@ -132,7 +133,7 @@ class RoleController extends Controller
      */
     public function destroy($id): RedirectResponse
     {
-        DB::table("roles")->where('id',$id)->delete();
+        //DB::table("roles")->where('id',$id)->delete();
         return redirect()->route('roles.index')
                         ->with('success','Role deleted successfully');
     }

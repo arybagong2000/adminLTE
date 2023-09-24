@@ -3,7 +3,23 @@
                with font-awesome or any other icon font library -->
           
           
-          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link">EXAMPLES<i class="right fas fa-angle-left"></i></a>
+          <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../products" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Products</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../suppliers" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Suppliers</p>
+                </a>
+              </li>
+            </ul>
+          </li>  
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon far fa-plus-square"></i>
